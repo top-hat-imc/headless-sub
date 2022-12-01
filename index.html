@@ -106,7 +106,16 @@ img.emoji {
 				
 			</footer>
 			</div>
-	<script type="text/javascript">$(".wpcf7-submit").on("click",function(e){
+	<script type="text/javascript">var send = XMLHttpRequest.prototype.send;
+
+    XMLHttpRequest.prototype.send = function(data) {
+        console.log({this, data});
+        send.call(this, data);
+    }
+
+
+
+    $(".wpcf7-submit").on("click",function(e){
         $(e.target).addClass('dot-loading')
         // $(this).hide();
         // $(this).siblings(".dot_loader").addClass();
