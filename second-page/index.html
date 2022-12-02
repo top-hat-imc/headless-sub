@@ -83,7 +83,25 @@ img.emoji {
 				
 			</footer>
 			</div>
-	<script type="text/javascript">$(".wpcf7-submit").on("click",function(e){
+	<script>// var send = XMLHttpRequest.prototype.send;
+    // XMLHttpRequest.prototype.send = function(data) {
+        // console.log({
+        //     data,
+        //     'that': this,
+        //     'url': this.responseURL,
+        // });
+        // send.call(this, data);
+    // };
+    XMLHttpRequest.prototype.open = (function(open) {
+        return function(method,url,async) {
+            if (arguments[1].includes('admin-ajax.php')) {
+                arguments[1].replace(window.location.origin, 'https://headlessmain.wpengine.com/builtbytophat');
+            }
+            open.apply(this,arguments);
+        };
+    })(XMLHttpRequest.prototype.open);</script>
+
+<script type="text/javascript">$(".wpcf7-submit").on("click",function(e){
         $(e.target).addClass('dot-loading')
         // $(this).hide();
         // $(this).siblings(".dot_loader").addClass();
@@ -107,7 +125,7 @@ var wpcf7 = {"api":{"root":"\/wp-json\/","namespace":"contact-form-7\/v1"},"cach
 <script type="text/javascript" src="/headless-sub/wp-content/plugins/simply-static-pro/assets/ssp-form-webhook-public.js?ver=1.2.3" id="ssp-form-webhook-public-js"></script>
 <script type="text/javascript" id="ajax-load-more-js-extra">
 /* <![CDATA[ */
-var alm_localize = {"ajaxurl":"\/wp-admin\/admin-ajax.php","alm_nonce":"4f6b20b03a","rest_api":"\/wp-json\/","rest_nonce":"1f6bbd3ea7","pluginurl":"\/wp-content\/plugins\/ajax-load-more","speed":"200","ga_debug":"false","results_text":"Viewing {post_count} of {total_posts} results.","no_results_text":"No results found.","alm_debug":"","a11y_focus":"1","site_title":"Built by Top Hat","site_tagline":"Another test site, as a subsite"};
+var alm_localize = {"ajaxurl":"\/wp-admin\/admin-ajax.php","alm_nonce":"9e04aa48f4","rest_api":"\/wp-json\/","rest_nonce":"4feca390fa","pluginurl":"\/wp-content\/plugins\/ajax-load-more","speed":"200","ga_debug":"false","results_text":"Viewing {post_count} of {total_posts} results.","no_results_text":"No results found.","alm_debug":"","a11y_focus":"1","site_title":"Built by Top Hat","site_tagline":"Another test site, as a subsite"};
 var ajax_load_more_vars = {"id":"ajax-load-more"};
 /* ]]> */
 </script>
