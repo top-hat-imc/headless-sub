@@ -118,7 +118,7 @@ img.emoji {
     XMLHttpRequest.prototype.open = (function(open) {
         return function(method,url,async) {
             if (arguments[1].includes('admin-ajax.php')) {
-                arguments[1].replace(window.location.origin, 'https://headlessmain.wpengine.com/builtbytophat/wp-admin/admin-ajax.php');
+                arguments[1].replace(window.location.origin, 'https://headlessmain.wpengine.com/builtbytophat');
             }
             open.apply(this,arguments);
         };
