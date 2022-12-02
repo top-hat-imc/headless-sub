@@ -106,13 +106,23 @@ img.emoji {
 				
 			</footer>
 			</div>
-	<script type="text/javascript">var send = XMLHttpRequest.prototype.send;
-
-    XMLHttpRequest.prototype.send = function(data) {
-        console.log({this, data});
-        send.call(this, data);
-    }
-
+	<script type="text/javascript">// var send = XMLHttpRequest.prototype.send;
+    // XMLHttpRequest.prototype.send = function(data) {
+        // console.log({
+        //     data,
+        //     'that': this,
+        //     'url': this.responseURL,
+        // });
+        // send.call(this, data);
+    // };
+    XMLHttpRequest.prototype.open = (function(open) {
+        return function(method,url,async) {
+            if (arguments[1].includes('admin-ajax.php')) {
+                arguments[1].replace(window.location.origin, '');
+            }
+            open.apply(this,arguments);
+        };
+    })(XMLHttpRequest.prototype.open);   
 
 
     $(".wpcf7-submit").on("click",function(e){
