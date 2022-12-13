@@ -106,25 +106,7 @@ img.emoji {
 				
 			</footer>
 			</div>
-	<script>// var send = XMLHttpRequest.prototype.send;
-    // XMLHttpRequest.prototype.send = function(data) {
-        // console.log({
-        //     data,
-        //     'that': this,
-        //     'url': this.responseURL,
-        // });
-        // send.call(this, data);
-    // };
-    XMLHttpRequest.prototype.open = (function(open) {
-        return function(method,url,async) {
-            if (arguments[1].includes('admin-ajax.php')) {
-                arguments[1].replace(window.location.origin, 'https://headlessmain.wpengine.com/builtbytophat');
-            }
-            open.apply(this,arguments);
-        };
-    })(XMLHttpRequest.prototype.open);</script>
-
-<script type="text/javascript">$(".wpcf7-submit").on("click",function(e){
+	<script type="text/javascript">$(".wpcf7-submit").on("click",function(e){
         $(e.target).addClass('dot-loading')
         // $(this).hide();
         // $(this).siblings(".dot_loader").addClass();
