@@ -4,3 +4,10 @@
   status = 200
   force = true
   headers = {X-From = "Frontend"}
+
+[[redirects]]
+  from = "/wp-json/*"
+  to = "https://headlessmain.wpengine.com/builtbytophat/wp-json/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Frontend"}
